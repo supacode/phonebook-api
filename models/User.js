@@ -35,6 +35,14 @@ const userSchema = Schema({
 userSchema.methods.toJSON = function() {
   return excludeProps(this.toObject(), ['__v', 'password']);
 };
+
+// Compare candidate password vs db hash
+userSchema.methods.comparePasswords = async function(enteredPassword, dbHash) {
+  const compare = await bcrypt.compare(enteredPassword, dbHash);
+
+  return compare;
+};
+
 userSchema.pre('save', async function(next) {
   const user = this;
 
