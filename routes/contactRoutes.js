@@ -9,4 +9,6 @@ router
   .post(contactController.createContact)
   .get(contactController.getAllContacts);
 
+router.route('/:id').get(contactController.getOneContact);
+
 module.exports = router;

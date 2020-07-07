@@ -23,3 +23,14 @@ exports.getAllContacts = catchAsync(async (req, res, next) => {
     }
   });
 });
+
+exports.getOneContact = catchAsync(async (req, res, next) => {
+  const contact = await Contact.findById(req.params.id);
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      contact
+    }
+  });
+});
