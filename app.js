@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const cookieParser = require('cookie-parser');
 
 dotenv.config({
   path: './config.env'
@@ -10,6 +11,7 @@ dotenv.config({
 const connectDb = require('./utils/connectDb');
 
 const authRoutes = require('./routes/authRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 const app = express();
 
@@ -21,6 +23,8 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 app.use(helmet());
 
-app.use('/api/v1/user', authRoutes);
+app.use(cookieParser());
 
+app.use('/api/v1/user', authRoutes);
+app.use('/api/v1/contact', contactRoutes);
 module.exports = app;

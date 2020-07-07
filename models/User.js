@@ -33,7 +33,7 @@ const userSchema = Schema({
 });
 
 userSchema.methods.toJSON = function() {
-  return excludeProps(this.toObject(), ['__v', 'password']);
+  return excludeProps({ schema: this.toObject(), fields: ['password'] });
 };
 
 // Compare candidate password vs db hash
