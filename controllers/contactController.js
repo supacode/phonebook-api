@@ -49,3 +49,9 @@ exports.updateContact = catchAsync(async (req, res, next) => {
     }
   });
 });
+
+exports.deleteContact = catchAsync(async (req, res, next) => {
+  await Contact.findByIdAndDelete(req.params.id);
+
+  res.status(204).json({});
+});
