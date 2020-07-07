@@ -34,3 +34,18 @@ exports.getOneContact = catchAsync(async (req, res, next) => {
     }
   });
 });
+
+exports.updateContact = catchAsync(async (req, res, next) => {
+  const updateContact = await Contact.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true, runValidators: true }
+  );
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      contact: updateContact
+    }
+  });
+});

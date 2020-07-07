@@ -9,7 +9,8 @@ const connectDb = async (DB = DATABASE_URI) => {
   await connect(DB, {
     useCreateIndex: true,
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false
   });
 };
 
