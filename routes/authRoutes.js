@@ -4,7 +4,10 @@ const authController = require('../controllers/authController');
 
 const router = Router();
 
-router.route('/register').post(authController.register);
+router
+  .route('/')
+  .post(authController.register)
+  .get(authController.getUsers);
 
 router.route('/login').post(authController.login);
 
