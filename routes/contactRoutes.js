@@ -1,8 +1,11 @@
 const { Router } = require('express');
 
 const contactController = require('../controllers/contactController');
+const authController = require('../controllers/authController');
 
 const router = Router();
+
+router.use(authController.protectRoutes);
 
 router
   .route('/')
