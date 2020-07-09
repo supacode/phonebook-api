@@ -83,6 +83,20 @@ exports.getUsers = catchAsync(async (req, res, next) => {
   });
 });
 
+exports.logout = (req, res, next) => {
+  const cookieOptions = {
+    expires: new Date(Date.now() - 1000),
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production'
+  };
+  res
+    .status(200)
+    .cookie('jwt', null, cookieOptions)
+    .json({
+      status: 'success'
+    });
+};
+
 exports.protectRoutes = catchAsync(async (req, res, next) => {
   let token;
 
