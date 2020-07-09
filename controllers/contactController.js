@@ -19,10 +19,8 @@ exports.getAllContacts = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      count: contacts.length,
-      contacts
-    }
+    count: contacts.length,
+    contacts
   });
 });
 
@@ -31,9 +29,7 @@ exports.getOneContact = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      contact
-    }
+    contact
   });
 });
 
@@ -46,9 +42,7 @@ exports.updateContact = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    data: {
-      contact: updateContact
-    }
+    contact: updateContact
   });
 });
 

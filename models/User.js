@@ -4,6 +4,9 @@ const bcrypt = require('bcryptjs');
 const excludeProps = require('../utils/excludeSchemaProps');
 
 const userSchema = Schema({
+  name: {
+    type: String
+  },
   email: {
     type: String,
     required: [true, 'E-mail is required'],
@@ -16,7 +19,7 @@ const userSchema = Schema({
     type: String,
     required: [true, 'Enter your password']
   },
-  confirmPassword: {
+  passwordConfirm: {
     type: String,
     required: [true, 'Confirm your password'],
     validate: {
@@ -50,7 +53,7 @@ userSchema.pre('save', async function(next) {
 
   user.password = await bcrypt.hash(user.password, 12);
 
-  user.confirmPassword = undefined;
+  user.passwordConfirm = undefined;
 
   next();
 });

@@ -4,6 +4,8 @@ const authController = require('../controllers/authController');
 
 const router = Router();
 
+router.get('/auth', authController.protectRoutes, authController.isAuth);
+
 router
   .route('/')
   .post(authController.register)

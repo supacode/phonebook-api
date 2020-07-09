@@ -27,17 +27,15 @@ const createSendToken = (
     .cookie('jwt', token, cookieOptions)
     .json({
       status: 'success',
-      data: {
-        user,
-        token
-      }
+      user,
+      token
     });
 };
 
 exports.register = catchAsync(async (req, res, next) => {
-  const { email, password, confirmPassword } = req.body;
+  const { name, email, password, passwordConfirm } = req.body;
 
-  const user = await User.create({ email, password, confirmPassword });
+  const user = await User.create({ name, email, password, passwordConfirm });
 
   createSendToken({ user, statusCode: 201, res });
 });
@@ -57,15 +55,31 @@ exports.login = catchAsync(async (req, res, next) => {
   createSendToken({ user, res, statusCode: 200 });
 });
 
+exports.isAuth = (req, res, next) => {
+  const { user } = req;
+
+  if (!user) {
+    return res.status(401).json({
+      status: 'error',
+      message: 'Not allowed to perform that action'
+    });
+  }
+
+  res.status(200).json({
+    status: 'success',
+    user
+  });
+
+  next();
+};
+
 exports.getUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
 
   res.status(200).json({
     status: 'success',
-    data: {
-      count: users.length,
-      users
-    }
+    count: users.length,
+    users
   });
 });
 
@@ -73,7 +87,7 @@ exports.protectRoutes = catchAsync(async (req, res, next) => {
   let token;
 
   if (
-    req.headers.authorization ||
+    req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
   ) {
     token = req.headers.authorization.split(' ')[1];
