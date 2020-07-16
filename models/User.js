@@ -5,19 +5,19 @@ const excludeProps = require('../utils/excludeSchemaProps');
 
 const userSchema = Schema({
   name: {
-    type: String
+    type: String,
   },
   email: {
     type: String,
     required: [true, 'E-mail is required'],
     validate: [validator.isEmail, 'Enter a valid email'],
     unique: true,
-    trim: true
+    trim: true,
   },
   password: {
     select: false,
     type: String,
-    required: [true, 'Enter your password']
+    required: [true, 'Enter your password'],
   },
   passwordConfirm: {
     type: String,
@@ -26,13 +26,13 @@ const userSchema = Schema({
       validator: function(field) {
         return field === this.password;
       },
-      message: 'Passwords do not match'
-    }
+      message: 'Passwords do not match',
+    },
   },
   createdAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
 userSchema.methods.toJSON = function() {

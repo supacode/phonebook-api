@@ -6,29 +6,29 @@ const contactSchema = Schema(
   {
     user: {
       type: SchemaTypes.ObjectId,
-      required: [true, 'Contact must be attached to a user']
+      required: [true, 'Contact must be attached to a user'],
     },
     name: {
       type: String,
-      required: [true, 'Contact must have a name']
+      required: [true, 'Contact must have a name'],
     },
     phone: {
-      type: String
+      type: String,
     },
     email: {
       type: String,
       validate: [validator.isEmail, 'Enter a valid email'],
-      trim: true
+      trim: true,
     },
     type: {
       type: String,
       enum: ['personal', 'professional'],
-      default: 'personal'
-    }
+      default: 'personal',
+    },
   },
   {
-    timestamps: true
-  }
+    timestamps: true,
+  },
 );
 
 contactSchema.methods.toJSON = function() {

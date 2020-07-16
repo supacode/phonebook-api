@@ -10,7 +10,7 @@ const connectDb = async (DB = DATABASE_URI) => {
     useCreateIndex: true,
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useFindAndModify: false
+    useFindAndModify: false,
   });
 };
 
