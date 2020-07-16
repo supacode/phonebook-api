@@ -6,13 +6,14 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 dotenv.config({
-  path: './config.env'
+  path: './config.env',
 });
 
 const connectDb = require('./utils/connectDb');
 
 const authRoutes = require('./routes/authRoutes');
 const contactRoutes = require('./routes/contactRoutes');
+const errorHandler = require('./controllers/errorHandler');
 
 const app = express();
 
@@ -30,4 +31,7 @@ app.use(cors());
 
 app.use('/api/v1/user', authRoutes);
 app.use('/api/v1/contact', contactRoutes);
+
+app.use('*', errorHandler);
+
 module.exports = app;
