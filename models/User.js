@@ -18,6 +18,7 @@ const userSchema = Schema({
     select: false,
     type: String,
     required: [true, 'Enter your password'],
+    minlength: 6,
   },
   passwordConfirm: {
     type: String,

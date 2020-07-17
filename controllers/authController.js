@@ -124,7 +124,7 @@ exports.protectRoutes = catchAsync(async (req, res, next) => {
   if (!token) {
     return next(
       new AppError({
-        message: 'You are not allowed to do that',
+        message: 'Login before you continue',
         statusCode: 401,
       }),
     );
