@@ -57,7 +57,7 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(
       new AppError({
         statusCode: 401,
-        message: 'Invalid login credentials',
+        message: 'Invalid E-mail or Password',
       }),
     );
   }
@@ -130,7 +130,7 @@ exports.protectRoutes = catchAsync(async (req, res, next) => {
     );
   }
 
-  const unsignedToken = jwt.verify(token, process.env.JWT_SECRET);
+  const unsignedToken = await jwt.verify(token, process.env.JWT_SECRET);
 
   const isJwtExpired =
     new Date(unsignedToken.exp * 1000) > new Date().getTime();

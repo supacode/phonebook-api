@@ -4,6 +4,7 @@ const globalErrorHandler = (err, req, res, next) => {
   let error = { ...err };
 
   error.message = err.message;
+  // eslint-disable-next-line
   console.log(err);
 
   // Invalid ObjectId
