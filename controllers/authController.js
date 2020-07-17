@@ -20,7 +20,7 @@ const createSendToken = (
   const cookieOptions = {
     httpOnly: true,
     expires: cookieExpiry,
-    // secure: process.env.NODE_ENV === 'production',
+    secure: process.env.NODE_ENV === 'production',
   };
 
   res

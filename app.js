@@ -38,7 +38,6 @@ app.use(cors());
 
 // test route
 app.use('/api/v1/test', (req, res, next) => {
-  console.log('test result');
   res.status(200).json({
     status: 'success',
     message: 'ok',
