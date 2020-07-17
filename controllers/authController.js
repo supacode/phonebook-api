@@ -18,8 +18,8 @@ const createSendToken = (
   );
 
   const cookieOptions = {
-    httpOnly: true,
     expires: cookieExpiry,
+    // httpOnly: true,
     // secure: process.env.NODE_ENV === 'production',
   };
 
