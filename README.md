@@ -1,7 +1,3 @@
-## Phonebook
-
-Host: https://phonebookapp-api.herokuapp.com/
-
 # Authentication Routes
 
 `POST` `/api/v1/user` Create new user resource
