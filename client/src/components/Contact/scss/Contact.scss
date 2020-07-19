@@ -1,0 +1,30 @@
+@import '../../../assets/variables';
+
+.contact {
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__empty {
+    &--head {
+      font-size: 2rem;
+    }
+  }
+  &__filter {
+    margin-bottom: 2rem;
+    &--input-text {
+      width: 100%;
+      border-radius: 2rem;
+      border: 2px solid #ddd;
+      padding: 10px 15px;
+    }
+  }
+}
+
+@media (max-width: $tab-width) {
+  .contact {
+    &__wrap {
+      flex-direction: column;
+    }
+  }
+}

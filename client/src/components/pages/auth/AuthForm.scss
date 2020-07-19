@@ -1,0 +1,63 @@
+@import '../../../assets/variables';
+
+.auth-form {
+  &__wrap {
+    max-width: 500px;
+    margin: auto;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+  }
+  &__title {
+    margin-bottom: 1rem;
+    font: {
+      size: 150%;
+      weight: 550;
+    }
+  }
+  &__input {
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 3px;
+    border: 1px #afafaf solid;
+    padding: 10px;
+    &:focus {
+      border-color: $accent;
+    }
+  }
+  &__action {
+    position: relative;
+    background: $accent;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    display: block;
+    overflow: hidden;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid $accent;
+    height: 60px;
+
+    &--wrap {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      left: 50%;
+      top: 50%;
+    }
+
+    &:hover {
+      background: #fff;
+      color: $accent;
+    }
+
+    &:disabled {
+      border: 0;
+      background: #ddd;
+    }
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}

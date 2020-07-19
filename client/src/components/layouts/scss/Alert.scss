@@ -1,0 +1,21 @@
+@import '../../../assets/variables';
+
+.alert {
+  text-align: center;
+  margin: 0 auto 2rem auto;
+  color: #fff;
+  border-radius: 0.5rem;
+  animation: fadeInSlideUp 0.4s forwards;
+  max-width: 450px;
+  padding: 1rem;
+  font-weight: 550;
+  &__error {
+    background: $danger;
+  }
+  &__warn {
+    background: $warn;
+  }
+  &__success {
+    background: $success;
+  }
+}

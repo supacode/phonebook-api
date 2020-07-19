@@ -1,0 +1,66 @@
+@import './assets/variables';
+
+// Reset start
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type='submit'],
+button {
+  transition: 0.4s ease-out;
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+// Reset End
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+.row {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.content {
+  margin: 3rem 0;
+}
+
+@media (max-width: $tab-width) {
+  .row {
+    padding-left: 2rem;
+    margin-right: 2rem;
+  }
+}

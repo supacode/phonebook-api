@@ -1,26 +1,60 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-function App() {
+import Header from './components/layouts/Header';
+import Contact from './components/Contact/Contact';
+import ContactContextProvider from './context/contact/contactState';
+import AuthContextProvider from './context/auth/authState';
+import AboutPage from './components/pages/About';
+import RegisterPage from './components/pages/auth/Register';
+import LoginPage from './components/pages/auth/Login';
+import AlertContextProvider from './context/alert/alertContext';
+import Alerts from './components/layouts/Alert';
+import setAuthToken from './utils/setAuthToken';
+import PrivateRoutes from './components/routing/PrivateRoute';
+
+import './App.scss';
+
+if (localStorage.getItem('jwt')) setAuthToken(localStorage.getItem('jwt'));
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContextProvider>
+      <ContactContextProvider>
+        <AlertContextProvider>
+          <BrowserRouter>
+            <Header />
+
+            <div className="row row__main">
+              <div className="content">
+                <Alerts />
+
+                <Switch>
+                  {/* About page */}
+                  <Route path="/about" exact>
+                    <AboutPage />
+                  </Route>
+
+                  {/* Register page */}
+                  <Route path="/register" exact>
+                    <RegisterPage />
+                  </Route>
+
+                  {/* Login page */}
+                  <Route path="/login" exact>
+                    <LoginPage />
+                  </Route>
+
+                  {/* Homepage */}
+                  <PrivateRoutes path="/" exact component={Contact} />
+                </Switch>
+              </div>
+            </div>
+          </BrowserRouter>
+        </AlertContextProvider>
+      </ContactContextProvider>
+    </AuthContextProvider>
   );
-}
+};
 
 export default App;
