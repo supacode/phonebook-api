@@ -22,7 +22,7 @@
     "express-mongo-sanitize": "^2.0.0",
     "helmet": "^3.23.3",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^5.9.21",
+    "mongoose": "^5.13.20",
     "morgan": "^1.10.0",
     "validator": "^13.1.1"
   },
